@@ -191,8 +191,7 @@
   &:not(:first-child) {
     > .btn,
     > .btn-group {
-      z-index: 1;
-      // remove nagative margin ($input-border-width) to solve overlapping issue with button.
+      z-index: 1      // remove nagative margin ($input-border-width) to solve overlapping issue with button.
       margin-left: 0;
 
       // When input is first, overlap the right side of it with the button(-group)
