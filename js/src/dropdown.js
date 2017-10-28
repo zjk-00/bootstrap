@@ -11,7 +11,6 @@ import Util from './util'
  */
 
 const Dropdown = (($) => {
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -90,7 +89,6 @@ const Dropdown = (($) => {
    */
 
   class Dropdown {
-
     constructor(element, config) {
       this._element  = element
       this._popper   = null
@@ -326,8 +324,8 @@ const Dropdown = (($) => {
         }
 
         if (event && (event.type === 'click' &&
-            /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE)
-            && $.contains(parent, event.target)) {
+            /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) &&
+            $.contains(parent, event.target)) {
           continue
         }
 
@@ -371,8 +369,8 @@ const Dropdown = (($) => {
       //  - If key is other than escape
       //    - If key is not up or down => not a dropdown command
       //    - If trigger inside the menu => not a dropdown command
-      if (/input|textarea/i.test(event.target.tagName) ?
-        event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
+      if (/input|textarea/i.test(event.target.tagName)
+        ? event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
         (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
           $(event.target).closest(Selector.MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
         return
@@ -390,7 +388,6 @@ const Dropdown = (($) => {
 
       if (!isActive && (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE) ||
            isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
-
         if (event.which === ESCAPE_KEYCODE) {
           const toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
           $(toggle).trigger('focus')
@@ -422,7 +419,6 @@ const Dropdown = (($) => {
 
       items[index].focus()
     }
-
   }
 
 
@@ -460,7 +456,6 @@ const Dropdown = (($) => {
   }
 
   return Dropdown
-
 })($, Popper)
 
 export default Dropdown

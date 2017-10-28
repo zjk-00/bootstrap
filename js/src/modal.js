@@ -10,8 +10,6 @@ import Util from './util'
  */
 
 const Modal = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -81,7 +79,6 @@ const Modal = (($) => {
    */
 
   class Modal {
-
     constructor(element, config) {
       this._config              = this._getConfig(config)
       this._element             = element
@@ -196,7 +193,6 @@ const Modal = (($) => {
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
       if (transition) {
-
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -297,7 +293,6 @@ const Modal = (($) => {
             this.hide()
           }
         })
-
       } else if (!this._isShown) {
         $(this._element).off(Event.KEYDOWN_DISMISS)
       }
@@ -331,8 +326,8 @@ const Modal = (($) => {
     }
 
     _showBackdrop(callback) {
-      const animate = $(this._element).hasClass(ClassName.FADE) ?
-        ClassName.FADE : ''
+      const animate = $(this._element).hasClass(ClassName.FADE)
+        ? ClassName.FADE : ''
 
       if (this._isShown && this._config.backdrop) {
         const doAnimate = Util.supportsTransitionEnd() && animate
@@ -379,7 +374,6 @@ const Modal = (($) => {
         $(this._backdrop)
           .one(Util.TRANSITION_END, callback)
           .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
-
       } else if (!this._isShown && this._backdrop) {
         $(this._backdrop).removeClass(ClassName.SHOW)
 
@@ -398,7 +392,6 @@ const Modal = (($) => {
         } else {
           callbackRemove()
         }
-
       } else if (callback) {
         callback()
       }
@@ -528,7 +521,6 @@ const Modal = (($) => {
         }
       })
     }
-
   }
 
 
@@ -546,8 +538,8 @@ const Modal = (($) => {
       target = $(selector)[0]
     }
 
-    const config = $(target).data(DATA_KEY) ?
-      'toggle' : $.extend({}, $(target).data(), $(this).data())
+    const config = $(target).data(DATA_KEY)
+      ? 'toggle' : $.extend({}, $(target).data(), $(this).data())
 
     if (this.tagName === 'A' || this.tagName === 'AREA') {
       event.preventDefault()
@@ -584,7 +576,6 @@ const Modal = (($) => {
   }
 
   return Modal
-
 })($)
 
 export default Modal

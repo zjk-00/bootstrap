@@ -8,8 +8,6 @@ import $ from 'jquery'
  */
 
 const Button = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -39,8 +37,8 @@ const Button = (($) => {
 
   const Event = {
     CLICK_DATA_API      : `click${EVENT_KEY}${DATA_API_KEY}`,
-    FOCUS_BLUR_DATA_API : `focus${EVENT_KEY}${DATA_API_KEY} `
-                        + `blur${EVENT_KEY}${DATA_API_KEY}`
+    FOCUS_BLUR_DATA_API : `focus${EVENT_KEY}${DATA_API_KEY} ` +
+                        `blur${EVENT_KEY}${DATA_API_KEY}`
   }
 
 
@@ -51,7 +49,6 @@ const Button = (($) => {
    */
 
   class Button {
-
     constructor(element) {
       this._element = element
     }
@@ -81,7 +78,6 @@ const Button = (($) => {
             if (input.checked &&
               $(this._element).hasClass(ClassName.ACTIVE)) {
               triggerChangeEvent = false
-
             } else {
               const activeElement = $(rootElement).find(Selector.ACTIVE)[0]
 
@@ -105,7 +101,6 @@ const Button = (($) => {
           input.focus()
           addAriaPressed = false
         }
-
       }
 
       if (addAriaPressed) {
@@ -140,7 +135,6 @@ const Button = (($) => {
         }
       })
     }
-
   }
 
 
@@ -182,7 +176,6 @@ const Button = (($) => {
   }
 
   return Button
-
 })($)
 
 export default Button

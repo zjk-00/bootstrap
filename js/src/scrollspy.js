@@ -10,8 +10,6 @@ import Util from './util'
  */
 
 const ScrollSpy = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -74,14 +72,13 @@ const ScrollSpy = (($) => {
    */
 
   class ScrollSpy {
-
     constructor(element, config) {
       this._element       = element
       this._scrollElement = element.tagName === 'BODY' ? window : element
       this._config        = this._getConfig(config)
-      this._selector      = `${this._config.target} ${Selector.NAV_LINKS},`
-                          + `${this._config.target} ${Selector.LIST_ITEMS},`
-                          + `${this._config.target} ${Selector.DROPDOWN_ITEMS}`
+      this._selector      = `${this._config.target} ${Selector.NAV_LINKS},` +
+                          `${this._config.target} ${Selector.LIST_ITEMS},` +
+                          `${this._config.target} ${Selector.DROPDOWN_ITEMS}`
       this._offsets       = []
       this._targets       = []
       this._activeTarget  = null
@@ -108,14 +105,14 @@ const ScrollSpy = (($) => {
     // public
 
     refresh() {
-      const autoMethod = this._scrollElement !== this._scrollElement.window ?
-        OffsetMethod.POSITION : OffsetMethod.OFFSET
+      const autoMethod = this._scrollElement !== this._scrollElement.window
+        ? OffsetMethod.POSITION : OffsetMethod.OFFSET
 
-      const offsetMethod = this._config.method === 'auto' ?
-        autoMethod : this._config.method
+      const offsetMethod = this._config.method === 'auto'
+        ? autoMethod : this._config.method
 
-      const offsetBase = offsetMethod === OffsetMethod.POSITION ?
-        this._getScrollTop() : 0
+      const offsetBase = offsetMethod === OffsetMethod.POSITION
+        ? this._getScrollTop() : 0
 
       this._offsets = []
       this._targets = []
@@ -188,8 +185,8 @@ const ScrollSpy = (($) => {
     }
 
     _getScrollTop() {
-      return this._scrollElement === window ?
-          this._scrollElement.pageYOffset : this._scrollElement.scrollTop
+      return this._scrollElement === window
+        ? this._scrollElement.pageYOffset : this._scrollElement.scrollTop
     }
 
     _getScrollHeight() {
@@ -200,16 +197,16 @@ const ScrollSpy = (($) => {
     }
 
     _getOffsetHeight() {
-      return this._scrollElement === window ?
-          window.innerHeight : this._scrollElement.getBoundingClientRect().height
+      return this._scrollElement === window
+        ? window.innerHeight : this._scrollElement.getBoundingClientRect().height
     }
 
     _process() {
       const scrollTop    = this._getScrollTop() + this._config.offset
       const scrollHeight = this._getScrollHeight()
-      const maxScroll    = this._config.offset
-        + scrollHeight
-        - this._getOffsetHeight()
+      const maxScroll    = this._config.offset +
+        scrollHeight -
+        this._getOffsetHeight()
 
       if (this._scrollHeight !== scrollHeight) {
         this.refresh()
@@ -231,9 +228,9 @@ const ScrollSpy = (($) => {
       }
 
       for (let i = this._offsets.length; i--;) {
-        const isActiveTarget = this._activeTarget !== this._targets[i]
-            && scrollTop >= this._offsets[i]
-            && (typeof this._offsets[i + 1] === 'undefined' ||
+        const isActiveTarget = this._activeTarget !== this._targets[i] &&
+            scrollTop >= this._offsets[i] &&
+            (typeof this._offsets[i + 1] === 'undefined' ||
                 scrollTop < this._offsets[i + 1])
 
         if (isActiveTarget) {
@@ -299,8 +296,6 @@ const ScrollSpy = (($) => {
         }
       })
     }
-
-
   }
 
 
@@ -334,7 +329,6 @@ const ScrollSpy = (($) => {
   }
 
   return ScrollSpy
-
 })($)
 
 export default ScrollSpy

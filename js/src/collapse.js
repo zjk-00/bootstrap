@@ -10,8 +10,6 @@ import Util from './util'
  */
 
 const Collapse = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -69,7 +67,6 @@ const Collapse = (($) => {
    */
 
   class Collapse {
-
     constructor(element, config) {
       this._isTransitioning = false
       this._element         = element
@@ -231,7 +228,7 @@ const Collapse = (($) => {
             const $elem = $(selector)
             if (!$elem.hasClass(ClassName.SHOW)) {
               $(trigger).addClass(ClassName.COLLAPSED)
-                   .attr('aria-expanded', false)
+                .attr('aria-expanded', false)
             }
           }
         }
@@ -362,7 +359,6 @@ const Collapse = (($) => {
         }
       })
     }
-
   }
 
 
@@ -403,7 +399,6 @@ const Collapse = (($) => {
   }
 
   return Collapse
-
 })($)
 
 export default Collapse

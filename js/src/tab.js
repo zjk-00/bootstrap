@@ -10,8 +10,6 @@ import Util from './util'
  */
 
 const Tab = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -60,7 +58,6 @@ const Tab = (($) => {
    */
 
   class Tab {
-
     constructor(element) {
       this._element = element
     }
@@ -159,9 +156,9 @@ const Tab = (($) => {
       }
 
       const active          = activeElements[0]
-      const isTransitioning = callback
-        && Util.supportsTransitionEnd()
-        && (active && $(active).hasClass(ClassName.FADE))
+      const isTransitioning = callback &&
+        Util.supportsTransitionEnd() &&
+        (active && $(active).hasClass(ClassName.FADE))
 
       const complete = () => this._transitionComplete(
         element,
@@ -174,7 +171,6 @@ const Tab = (($) => {
         $(active)
           .one(Util.TRANSITION_END, complete)
           .emulateTransitionEnd(TRANSITION_DURATION)
-
       } else {
         complete()
       }
@@ -215,7 +211,6 @@ const Tab = (($) => {
 
       if (element.parentNode &&
           $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
-
         const dropdownElement = $(element).closest(Selector.DROPDOWN)[0]
         if (dropdownElement) {
           $(dropdownElement).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
@@ -250,7 +245,6 @@ const Tab = (($) => {
         }
       })
     }
-
   }
 
 
@@ -281,7 +275,6 @@ const Tab = (($) => {
   }
 
   return Tab
-
 })($)
 
 export default Tab

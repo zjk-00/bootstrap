@@ -8,8 +8,6 @@ import $ from 'jquery'
  */
 
 const Util = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Private TransitionEnd Helpers
@@ -90,8 +88,8 @@ const Util = (($) => {
   function escapeId(selector) {
     // we escape IDs in case of special selectors (selector = '#myId:something')
     // $.escapeSelector does not exist in jQuery < 3
-    selector = typeof $.escapeSelector === 'function' ? $.escapeSelector(selector).substr(1) :
-      selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1')
+    selector = typeof $.escapeSelector === 'function' ? $.escapeSelector(selector).substr(1)
+      : selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1')
 
     return selector
   }
@@ -154,8 +152,7 @@ const Util = (($) => {
         if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
           const expectedTypes = configTypes[property]
           const value         = config[property]
-          const valueType     = value && Util.isElement(value) ?
-                                'element' : toType(value)
+          const valueType     = value && Util.isElement(value) ? 'element' : toType(value)
 
           if (!new RegExp(expectedTypes).test(valueType)) {
             throw new Error(
@@ -171,7 +168,6 @@ const Util = (($) => {
   setTransitionEndSupport()
 
   return Util
-
 })($)
 
 export default Util

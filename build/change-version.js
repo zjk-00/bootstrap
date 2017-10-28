@@ -34,18 +34,16 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
     }
     names.forEach((name) => {
       const filepath = path.join(directory, name)
-      fs.lstat(filepath, (err, stats) => {
-        if (err) {
-          process.nextTick(errback, err)
+      fs.lstat(filepath, (er, stats) => {
+        if (er) {
+          process.nextTick(errback, er)
           return
         }
         if (stats.isSymbolicLink()) {
           return
-        }
-        else if (stats.isDirectory()) {
+        } else if (stats.isDirectory()) {
           process.nextTick(walkAsync, filepath, excludedDirectories, fileCallback, errback)
-        }
-        else if (stats.isFile()) {
+        } else if (stats.isFile()) {
           process.nextTick(fileCallback, filepath)
         }
       })
@@ -63,8 +61,7 @@ function replaceRecursively(directory, excludedDirectories, allowedExtensions, o
   } : (filepath) => {
     if (allowedExtensions.has(path.parse(filepath).ext)) {
       console.log(`FILE: ${filepath}`)
-    }
-    else {
+    } else {
       console.log(`EXCLUDED:${filepath}`)
     }
   }

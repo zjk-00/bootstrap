@@ -10,8 +10,6 @@ import Util from './util'
  */
 
 const Alert = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -50,7 +48,6 @@ const Alert = (($) => {
    */
 
   class Alert {
-
     constructor(element) {
       this._element = element
     }
@@ -65,9 +62,7 @@ const Alert = (($) => {
 
     // public
 
-    close(element) {
-      element = element || this._element
-
+    close(element = this._element) {
       const rootElement = this._getRootElement(element)
       const customEvent = this._triggerCloseEvent(rootElement)
 
@@ -157,7 +152,6 @@ const Alert = (($) => {
         alertInstance.close(this)
       }
     }
-
   }
 
 
@@ -188,7 +182,6 @@ const Alert = (($) => {
   }
 
   return Alert
-
 })($)
 
 export default Alert

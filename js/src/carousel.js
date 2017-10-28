@@ -10,8 +10,6 @@ import Util from './util'
  */
 
 const Carousel = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -92,7 +90,6 @@ const Carousel = (($) => {
    */
 
   class Carousel {
-
     constructor(element, config) {
       this._items             = null
       this._interval          = null
@@ -198,9 +195,9 @@ const Carousel = (($) => {
         return
       }
 
-      const direction = index > activeIndex ?
-        Direction.NEXT :
-        Direction.PREV
+      const direction = index > activeIndex
+        ? Direction.NEXT
+        : Direction.PREV
 
       this._slide(direction, this._items[index])
     }
@@ -272,7 +269,6 @@ const Carousel = (($) => {
           this.next()
           break
         default:
-          return
       }
     }
 
@@ -296,8 +292,8 @@ const Carousel = (($) => {
       const delta     = direction === Direction.PREV ? -1 : 1
       const itemIndex = (activeIndex + delta) % this._items.length
 
-      return itemIndex === -1 ?
-        this._items[this._items.length - 1] : this._items[itemIndex]
+      return itemIndex === -1
+        ? this._items[this._items.length - 1] : this._items[itemIndex]
     }
 
 
@@ -386,7 +382,6 @@ const Carousel = (($) => {
 
       if (Util.supportsTransitionEnd() &&
         $(this._element).hasClass(ClassName.SLIDE)) {
-
         $(nextElement).addClass(orderClassName)
 
         Util.reflow(nextElement)
@@ -405,10 +400,8 @@ const Carousel = (($) => {
             this._isSliding = false
 
             setTimeout(() => $(this._element).trigger(slidEvent), 0)
-
           })
           .emulateTransitionEnd(TRANSITION_DURATION)
-
       } else {
         $(activeElement).removeClass(ClassName.ACTIVE)
         $(nextElement).addClass(ClassName.ACTIVE)
@@ -483,7 +476,6 @@ const Carousel = (($) => {
 
       event.preventDefault()
     }
-
   }
 
 
@@ -518,7 +510,6 @@ const Carousel = (($) => {
   }
 
   return Carousel
-
 })($)
 
 export default Carousel
